@@ -62,48 +62,47 @@ class Tab extends Component{
     render(){
         // console.log('App:',this)
         return (
-
-                <div id="BottomBar">
-                    <TabBar
-                    onClick={this.props.handleChange}
-                    unselectedTintColor="#949494"
-                    tintColor="#33A3F4"
-                    barTintColor="white"
-                    hidden={this.state.hidden}
-                    noRenderContent="true"
-                    >
-                        {
-                            this.state.TabBar.map(item=>{
-                                return (
-                                        <TabBar.Item
-                                        title={item.text}
-                                        key={item.path}
-                                        icon={<div style={{
-                                            width: '22px',
-                                            height: '22px',
-                                            background: 'url(https://zos.alipayobjects.com/rmsportal/sifuoDUQdAFKAVcFGROC.svg) center center /  21px 21px no-repeat' }}
-                                        />
-                                        }
-                                        selectedIcon={<div style={{
-                                            width: '22px',
-                                            height: '22px',
-                                            background: 'url(https://zos.alipayobjects.com/rmsportal/iSrlOTqrKddqbOmlvUfq.svg) center center /  21px 21px no-repeat' }}
-                                        />
-                                        }
-                                        selected={this.state.selectedTab === item.path}
-                                        onPress={() => {
-                                            this.setState({
-                                                selectedTab: item.path,
-                                            });
-                                            this.props.history.push(item.path)
-                                        }}
-                                        > 
-                                        </TabBar.Item>
-                                )
-                            })
-                        }
-                        </TabBar>
-                    </div>
+            <div id="BottomBar">
+                <TabBar
+                onClick={this.props.handleChange}
+                unselectedTintColor="#949494"
+                tintColor="#33A3F4"
+                barTintColor="white"
+                hidden={this.state.hidden}
+                noRenderContent="true"
+                >
+                    {
+                        this.state.TabBar.map(item=>{
+                            return (
+                                    <TabBar.Item
+                                    title={item.text}
+                                    key={item.path}
+                                    icon={<div style={{
+                                        width: '22px',
+                                        height: '22px',
+                                        background: 'url(https://zos.alipayobjects.com/rmsportal/sifuoDUQdAFKAVcFGROC.svg) center center /  21px 21px no-repeat' }}
+                                    />
+                                    }
+                                    selectedIcon={<div style={{
+                                        width: '22px',
+                                        height: '22px',
+                                        background: 'url(https://zos.alipayobjects.com/rmsportal/iSrlOTqrKddqbOmlvUfq.svg) center center /  21px 21px no-repeat' }}
+                                    />
+                                    }
+                                    selected={this.state.selectedTab === item.path}
+                                    onPress={() => {
+                                        this.setState({
+                                            selectedTab: item.path,
+                                        });
+                                        this.props.history.push(item.path)
+                                    }}
+                                    > 
+                                    </TabBar.Item>
+                            )
+                        })
+                    }
+                </TabBar>
+            </div>
         );
     }
 }

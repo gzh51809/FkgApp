@@ -11,45 +11,6 @@ import Cart from './components/Cart/Cart';
 import Mine from './components/Mine/Mine';
 
 class App extends Component{
-    constructor(){
-        super();
-        this.state = {
-            TabBar:[
-                {
-                    text:'首页',
-                    path:'/home',
-                    name:'Home',
-                    icon:'home',
-                    color:'blueTab'
-                },{
-                    text:'分类',
-                    path:'/classity',
-                    name:'Classity',
-                    icon:'bars',
-                    color:'redTab'
-                },{
-                    text:'消息',
-                    path:'/news',
-                    name:'News',
-                    icon:'users',
-                    color:'greenTab'
-                },{
-                    text:'购物车',
-                    path:'/cart',
-                    name:'Cart',
-                    icon:'shopping-cart',
-                    color:'yellowTab'
-                },{
-                    text:'我的',
-                    path:'/mine',
-                    name:'Mine',
-                    icon:'home',
-                    color:'pinkTab'
-                }
-            ],
-            current:'/home',
-        }
-    }
     render(){
         return (
             <div id="superBox">
