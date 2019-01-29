@@ -6,7 +6,7 @@ import TabBar from './components/TabBar';
 class App extends Component {
 	render() {
 		return (
-			<div>
+			<div id="bigbox">
 				<TabBar/>
 			</div>
     	);
