@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
+import '../../sass/bigCenter.scss';
+import TabBar from '../TabBar'
 class Classity extends Component {
     render(){
         return (
-            <div>这是分类</div>
+            <div id="bigbox">
+                <div className="bigCenter">这是分类</div>
+                <TabBar/>
+            </div>
         )
     }
 }

@@ -1,0 +1,9 @@
+.bigCenter{
+    flex: 1;
+    overflow-x: hidden;
+}
+#bigbox{
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+}

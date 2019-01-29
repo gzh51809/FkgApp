@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
+import '../../sass/bigCenter.scss';
+import TabBar from '../TabBar'
 class Mine extends Component {
     render(){
         return (
-            <div>这是我的</div>
+            <div id="bigbox">
+                <div className="bigCenter">这是我的</div>
+                <TabBar/>
+            </div>
         )
     }
 }
