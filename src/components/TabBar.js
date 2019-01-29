@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { TabBar } from 'antd-mobile';
 import {withRouter} from 'react-router-dom';
 import '../sass/TabBar.scss'
-
+import '../plugins/icon/iconfont.css';
 
 class Tab extends Component{
     constructor(){
@@ -13,32 +13,27 @@ class Tab extends Component{
                     text:'首页',
                     path:'/home',
                     name:'Home',
-                    icon:'home',
-                    color:'blueTab'
+                    icon:'iconfont icon-shouye1',
                 },{
                     text:'分类',
                     path:'/classity',
                     name:'Classity',
-                    icon:'bars',
-                    color:'redTab'
+                    icon:'iconfont icon-icon_category',
                 },{
                     text:'消息',
                     path:'/news',
                     name:'News',
-                    icon:'users',
-                    color:'greenTab'
+                    icon:'iconfont icon-xiaoxi',
                 },{
                     text:'购物车',
                     path:'/cart',
                     name:'Cart',
-                    icon:'shopping-cart',
-                    color:'yellowTab'
+                    icon:'iconfont icon-03f',
                 },{
                     text:'我的',
                     path:'/mine',
                     name:'Mine',
-                    icon:'home',
-                    color:'pinkTab'
+                    icon:'iconfont icon-wode1',
                 }
             ],
             current:'/home',
@@ -66,7 +61,7 @@ class Tab extends Component{
                 <TabBar
                 onClick={this.props.handleChange}
                 unselectedTintColor="#949494"
-                tintColor="#33A3F4"
+                tintColor="#FDA143"
                 barTintColor="white"
                 hidden={this.state.hidden}
                 noRenderContent="true"
@@ -77,16 +72,19 @@ class Tab extends Component{
                                     <TabBar.Item
                                     title={item.text}
                                     key={item.path}
-                                    icon={<div style={{
+                                    icon={<div className={item.icon} style={{
                                         width: '22px',
                                         height: '22px',
-                                        background: 'url(https://zos.alipayobjects.com/rmsportal/sifuoDUQdAFKAVcFGROC.svg) center center /  21px 21px no-repeat' }}
+                                        fontSize:'22px'
+                                    }}
                                     />
                                     }
-                                    selectedIcon={<div style={{
+                                    selectedIcon={<div className={item.icon} style={{
                                         width: '22px',
                                         height: '22px',
-                                        background: 'url(https://zos.alipayobjects.com/rmsportal/iSrlOTqrKddqbOmlvUfq.svg) center center /  21px 21px no-repeat' }}
+                                        fontSize:'22px',
+                                        color:'#FDA143'
+                                    }}
                                     />
                                     }
                                     selected={this.state.selectedTab === item.path}
