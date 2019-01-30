@@ -92,7 +92,11 @@ class Tab extends Component{
                                         this.setState({
                                             selectedTab: item.path,
                                         });
-                                        this.props.history.push(item.path)
+                                        if(this.props.match.path === item.path){
+                                            return
+                                        }else{
+                                            this.props.history.push(item.path)
+                                        }
                                     }}
                                     > 
                                     </TabBar.Item>

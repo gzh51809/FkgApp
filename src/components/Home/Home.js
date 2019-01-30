@@ -11,7 +11,8 @@ class Home extends Component {
         super();
         this.state= {
             Carousel:[],
-            navBar:[]
+            navBar:[],
+            homeScoll:[]
         }
     }
     componentWillMount(){
@@ -26,13 +27,20 @@ class Home extends Component {
             this.setState({
                 navBar:res.data.data.mbTplLayoutDatas
             })
-            console.log(this.state.navBar)
+            // console.log(this.state.navBar)
+        })
+        axios.get('https://www.fkgou.com/mallms/wap/home/mobconfig/query?mbTplLayoutId=103').then(res=>{
+            // console.log(res.data);
+            this.setState({
+                homeScoll:res.data.data.mbTplLayoutDatas
+            })
+            console.log(this.state.homeScoll)
         })
     }
     render(){
         return (
             <div id="bigbox">
-                <div className="bigTop">
+                <div className="homeBigTop">
                     <span className="iconfont icon-saoyisao spanOne"></span>
                     <span className="spanTwo">
                         <span>
@@ -57,7 +65,7 @@ class Home extends Component {
                             })
                         }
                     </Carousel>
-                    <dl className="navBar">
+                    <dl className="homeNavBar">
                         {
                             this.state.navBar.map(item=>{
                                 return (
@@ -69,7 +77,30 @@ class Home extends Component {
                             })
                         }
                     </dl>
-                    <div>adasdasdsa</div>
+                    <img src="https://www.fkgou.com/wap/images/20190126193550.gif" alt="" className="newImg"/>
+                    <div className="homeWidth">
+                        <div className="fyys">
+                            <span>今日特惠</span>
+                            <span>想你所想,如你所愿</span>
+                            <i className="iconfont icon-jiantou2"></i>
+                        </div>
+                        <div className="homeScoll">
+                            <dl>
+                                {
+                                    this.state.homeScoll.map(item=>{
+                                        return (
+                                            <dt key={item.goodsId}>
+                                                <img src={item.goodsImage} alt=""/>
+                                                <p>{item.goodsName}</p>
+                                                <span>￥{item.goodsPrice}</span>
+                                                <span>￥{item.goodsMarketPrice}</span>
+                                            </dt>
+                                        )
+                                    })
+                                }
+                            </dl>
+                        </div>
+                    </div>
                 </div>
                 <TabBar/>
             </div>

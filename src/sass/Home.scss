@@ -1,5 +1,5 @@
 // 顶部
-.bigTop{
+.homeBigTop{
     background: white;
     height:38px;
     display: flex;
@@ -43,7 +43,6 @@
     }
 }
 // 中间内容部分 
-
 // 轮播
 .slider{
     height: 112px !important;
@@ -62,11 +61,11 @@
     }
 } 
 // navBar
-.navBar{
+.homeNavBar{
     width: 90%;
     margin-left: 5%;
     height: 180px;
-    dt{
+    &>dt{
         width: 20%;
         text-align: center;
         margin-top: 10px;
@@ -79,6 +78,53 @@
             display: block;
             font-size: 12px;
             margin:15px 0 12px 0;
+        }
+    }
+}
+// 新人红包
+.newImg{
+    width: 90%;
+    margin-left: 5%;
+}
+.homeWidth{
+    width:95%;
+    margin-left:2.5%;
+}
+.fyys{
+    height: 32px;
+    line-height: 32px;
+    &>span{
+        float: left;
+    }
+    span:nth-child(1){
+        font-size: 18px;
+        font-weight: 600;
+    }
+    span:nth-child(2){
+        margin-left:15px;
+        font-size: 13px;
+        padding-top:3px;
+        color:#666666;
+    }
+    &>i{
+        float: right;
+        color:#2EC84F;
+        padding-top:3px;
+    }
+}
+// 左右滑动
+.homeScoll{
+    &>dl{
+        width: 700px;
+        height: 250px;
+        dt{
+            padding: 5px;
+            width: 100px;
+            float: left;
+            &>img{
+                width:90px;
+                height:90px;
+            }
         }
     }
 }
