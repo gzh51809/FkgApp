@@ -4,6 +4,15 @@ ul,li,ol{ list-style:none; }
 a{text-decoration: none}
 body,html,ul{margin: 0;padding: 0}
 body>div{height: 100%;}
+/*清除浮动（不管）*/
+.clearfix:before,.clearfix:after {  /*清楚浮动*/
+    content:"";
+    display:table;
+}
+.clearfix:after{clear:both;}
+.clearfix{
+    *zoom:1;/*IE/7/6*/
+}
 #superBox{
     height:100%;
 }

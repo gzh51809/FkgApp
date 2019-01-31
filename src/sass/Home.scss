@@ -90,6 +90,7 @@
     width:95%;
     margin-left:2.5%;
 }
+// 复用样式
 .fyys{
     height: 32px;
     line-height: 32px;
@@ -114,17 +115,131 @@
 }
 // 左右滑动
 .homeScoll{
+    margin-bottom: 20px;
     &>dl{
-        width: 700px;
-        height: 250px;
+        width: 900px;
+        height: 152px;
         dt{
             padding: 5px;
             width: 100px;
             float: left;
+            background: #FAFAFA;
+            margin-right:17px;
             &>img{
                 width:90px;
                 height:90px;
             }
+            &>p{
+                color: #666;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                font-size:12px;
+            }
+            &>span{
+                font-size: 11px;
+                color:#F02419;
+                float: left
+            }
+            &>del{
+                font-size: 11px;
+                color:#737373;
+                float: right
+            }
+        }
+    }
+}
+.goodShop{
+    dl{
+        width: 3000px;
+        height: 200px;
+        dt{
+            float: left;
+            margin-right:20px;
+            img{
+                width: 345px;
+                height: 200px;
+            }
+        } 
+    }
+}
+.goodGoods{
+    dl{
+        height: 316px;
+        padding:5px;
+        background: #F6F9FB;
+        border-radius: 10px;
+        dt{
+            float: left;
+            width: 160px;
+            margin-bottom:10px;
+            margin:0 5px 10px 5px;
+            // margin-right:10px;
+            img{
+                width:160px;
+                height: 90px;
+            }
+        }
+    }
+}
+// 标题复用样式
+.btys{
+    position: relative;
+    height: 16px;
+    margin:5px 0;
+    &>span{
+        display: inline-block;
+        position: absolute;
+    }
+    span:nth-child(1){
+        height:1px;
+        width: 140px;
+        border-top: 1px solid #8f8f94;
+        left:0;
+        top:8px;
+    }
+    span:nth-child(2){
+        top:0;
+        left:150px;
+    }
+    span:nth-child(3){
+        height:1px;
+        width: 140px;
+        border-top: 1px solid #8f8f94;
+        right:0;
+        top:8px;
+    }
+}
+.homeShop{
+    width: 100%;
+    height: 100%;
+    dt:nth-child(odd){
+        margin-right:4%;
+    }
+    dt{
+        float: left;
+        width: 48%;
+        margin-bottom:10px;
+        img{
+            width: 100%;
+        }
+        p{
+            color: #666;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-size: 12px;
+        }
+        span:nth-child(3){
+            float: left;
+            color:#FB5460;
+            font-size: 12px;
+            font-weight: 900
+        }
+        span:nth-child(4){
+            float: right;
+            color: #8f8f94;
+            font-size: 12px;
         }
     }
 }

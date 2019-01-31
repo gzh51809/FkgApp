@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../../sass/bigCenter.scss';
-import TabBar from '../TabBar'
+import TabBar from '../../components/TabBar'
 class Mine extends Component {
     render(){
         return (
