@@ -1,0 +1,78 @@
+// 清除dl默认margin,padding
+.ClearfixDl{
+    margin: 0;
+    padding: 0
+}
+.ClassifyLeft{
+    position: fixed;
+    top:42px;
+    left:0;
+    width:25%;
+    &>dl{
+        &>dt{
+            text-indent: 20px;
+            height:38px;
+            line-height: 38px;
+            background: #f3f3f3;
+            position: relative;
+            span:nth-child(1){
+                position: absolute;
+                top:9px;
+                left:10px;
+                display: inline-block;
+                width: 5px;
+                height: 20px;
+                // line-height: 20px;
+                background: #f3f3f3;
+            }
+        }
+        .ClassifyShow{
+            background: #fff;
+        }
+        .ClassifyShowColor{
+            color:#FFB501;
+        }
+        .ClassifyShowBC{
+            background: #FFB501 !important;
+        }
+    }
+}
+.ClassifyRight{
+    float: right;
+    width:75%;
+    padding:5px;
+    .ClassifyDt{
+        float: left;
+        width: 76px;
+        // height: 70px;
+        text-align: center;
+        margin:7px;
+        &>img{
+            width: 76px;
+            height: 76px;
+        }
+        span:nth-child(2){
+            color:#8f8f94;
+        }
+    }
+}
+// 更改组件中的样式
+.ClassifyBtys{
+    span:nth-child(1){
+        width:37%;
+    }
+    span:nth-child(2){
+        left:40%;
+        text-align: center;
+        display: inline-block;
+        width: 56px;
+        color:#8f8f94;
+    }
+    span:nth-child(3){
+        width:37%;
+    }
+}
+// 中间内容顶部边框
+.classifyTop{
+    border-top: 4px solid #f3f3f3;
+}

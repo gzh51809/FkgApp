@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import '../../sass/bigCenter.scss';
 import '../../sass/Home.scss';
 import '../../plugins/icon/iconfont.css';
-import TabBar from '../../components/TabBar'
+import TabBar from '../../components/TabBar';
+import TopSearch from '../../components/TopSearch';
 import { Carousel } from 'antd-mobile';
 
 import axios from 'axios';
@@ -120,16 +121,7 @@ class Home extends Component {
     render(){
         return (
             <div id="bigbox">
-                <div className="homeBigTop">
-                    <span className="iconfont icon-saoyisao spanOne"></span>
-                    <span className="spanTwo">
-                        <span>
-                            <i className="iconfont icon-guanbi"></i>
-                            搜索您想要的产品
-                        </span>
-                    </span>
-                    <span className="iconfont icon-xiaoxi1 spanThr"></span>
-                </div>
+                <TopSearch/>
                 <div className="bigCenter">
                     <Carousel
                         autoplay={true}
