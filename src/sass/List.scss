@@ -1,0 +1,89 @@
+// 顶部样式
+#listTop{
+    .homeBigTop{
+        .spanOne{
+            font-size: 1.25rem !important;
+        }
+        .spanTwo{
+            margin: 0.375rem 0 0 0rem;
+            &>span{
+                display: inline-block;
+                line-height: 1.5rem;
+                padding-left: 2.125rem;
+                height: 1.625rem;
+                width: 17.8125rem;
+                background: #fff;
+                border:0.0625rem solid #ccc;
+                color: #ccc;
+                border-radius: 1.25rem;
+                font-size: 0.8125rem;
+                position: relative;
+                &>i{
+                    color: #ccc;
+                }
+            }
+        }
+    }
+}
+// listTab
+.listTab{
+    height: 3.125rem;
+    background: #fff;
+    border-bottom:0.0625rem solid #ccc;
+    .listTabUl{
+        display: flex;
+        height: 3.0625rem;
+        &>li{
+            flex: 1;
+            height:3.0625rem;
+            text-align: center;
+            line-height: 3.0625rem;
+            font-size: 1.0625rem;
+        }
+    }
+}
+.ListTab{
+    color:#F4181D;
+}
+// 中间内容部分
+.listLi{
+    padding: 0.625rem;
+    height: 9.375rem;
+    // position: relative;
+    display: flex;
+    &>img{
+        // float: left;
+        width: 8.125rem;
+    }
+    .listLiRight{
+        // float: right;
+        flex:1;
+        padding: 0.5rem;
+        position: relative;
+        &>span{
+            position: absolute;
+            font-size: 0.6875rem;
+        }
+        span:nth-child(1){
+            color:#333333;
+            top:0.5rem;
+            left:0.5rem;
+        }
+        span:nth-child(2){
+            top:3.625rem;
+            left:0.5rem;
+            font-size: 0.8125rem;
+            color:#F02419;
+        }
+        span:nth-child(3){
+            bottom:0.5rem;
+            left:0.5rem;
+            color:#666666;
+        }
+        span:nth-child(4){
+            bottom:0.5rem;
+            right:0.5rem;
+            color:#666666;
+        }
+    }
+}

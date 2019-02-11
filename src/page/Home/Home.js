@@ -25,6 +25,8 @@ class Home extends Component {
             zb:[],
             // cnxh:[]
         }
+        this.gotolist = this.gotolist.bind(this)
+        this.gotodetail = this.gotodetail.bind(this)
     }
     componentWillMount(){
         axios.get('https://www.fkgou.com/mallms/wap/home/mobconfig/query?mbTplLayoutId=97').then(res=>{
@@ -32,6 +34,7 @@ class Home extends Component {
             this.setState({
                 Carousel:res.data.data.mbTplLayoutDatas
             })
+            // console.log(this.state.Carousel);
         })
         axios.get('https://www.fkgou.com/mallms/wap/home/mobconfig/query?mbTplLayoutId=102').then(res=>{
             // console.log(res.data);
@@ -118,6 +121,15 @@ class Home extends Component {
         //     // console.log(this.state.cnxh)
         // })
     }
+    gotolist(id){
+        id = (id.split(':')[1]).split('}')[0];
+        console.log(id,123);
+        this.props.history.push('/list/'+id)
+    }
+    gotodetail(id){
+        console.log(id)
+        this.props.history.push('/detail/'+id)
+    }
     render(){
         return (
             <div id="bigbox">
@@ -141,7 +153,7 @@ class Home extends Component {
                         {
                             this.state.navBar.map(item=>{
                                 return (
-                                    <dt key={item.imageName}>
+                                    <dt key={item.imageName} onClick={()=>{this.gotolist(item.imageData)}}>
                                         <img src={item.image} alt=""/>
                                         <span>{item.imageName}</span>
                                     </dt>
@@ -161,7 +173,7 @@ class Home extends Component {
                                 {
                                     this.state.homeScoll.map(item=>{
                                         return (
-                                            <dt key={item.goodsId}>
+                                            <dt key={item.goodsId} onClick={()=>{this.gotodetail(item.goodsId)}}>
                                                 <img src={item.goodsImage} alt=""/>
                                                 <p>{item.goodsName}</p>
                                                 <span>￥{item.goodsPrice}</span>
@@ -183,7 +195,7 @@ class Home extends Component {
                                 {
                                     this.state.goodShop.map(item=>{
                                         return (
-                                            <dt key={item.shopName}>
+                                            <dt key={item.shopName} onClick={()=>{this.gotodetail(item.imageList[0].goodsId)}}>
                                                 <img src={item.image} alt=""/>
                                             </dt>
                                         )
@@ -222,7 +234,7 @@ class Home extends Component {
                             {
                                 this.state.dfgoods.map(item=>{
                                     return (
-                                        <dt key={item.goodsId}>
+                                        <dt key={item.goodsId} onClick={()=>{this.gotodetail(item.goodsId)}}>
                                             <img src={item.goodsImage} alt=""/>
                                             <p>{item.goodsName}</p>
                                             <span>￥{item.goodsPrice}</span>
@@ -243,7 +255,7 @@ class Home extends Component {
                             {
                                 this.state.xxgoods.map(item=>{
                                     return (
-                                        <dt key={item.goodsId}>
+                                        <dt key={item.goodsId} onClick={()=>{this.gotodetail(item.goodsId)}}>
                                             <img src={item.goodsImage} alt=""/>
                                             <p>{item.goodsName}</p>
                                             <span>￥{item.goodsPrice}</span>

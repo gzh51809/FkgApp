@@ -73,16 +73,16 @@ class Tab extends Component{
                                     title={item.text}
                                     key={item.path}
                                     icon={<div className={item.icon} style={{
-                                        width: '22px',
-                                        height: '22px',
-                                        fontSize:'22px'
+                                        width: '1.375rem',
+                                        height: '1.375rem',
+                                        fontSize:'1.375rem'
                                     }}
                                     />
                                     }
                                     selectedIcon={<div className={item.icon} style={{
-                                        width: '22px',
-                                        height: '22px',
-                                        fontSize:'22px',
+                                        width: '1.375rem',
+                                        height: '1.375rem',
+                                        fontSize:'1.375rem',
                                         color:'#FDA143'
                                     }}
                                     />

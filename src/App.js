@@ -9,6 +9,8 @@ import Classity from './page/Classify/Classify';
 import News from './page/News/News';
 import Cart from './page/Cart/Cart';
 import Mine from './page/Mine/Mine';
+import List from './page/List/List';
+import Detail from './page/Detail/Detail';
 
 class App extends Component{
     render(){
@@ -20,6 +22,8 @@ class App extends Component{
                     <Route path="/mine" component={Mine}/>
                     <Route path="/cart" component={Cart}/>
                     <Route path="/news" component={News}/>
+                    <Route path="/list" component={List}/>
+                    <Route path="/detail" component={Detail}/>
                     <Redirect from="/" to="/home"/>
                 </Switch>
 			</div>

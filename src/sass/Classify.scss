@@ -5,24 +5,25 @@
 }
 .ClassifyLeft{
     position: fixed;
-    top:42px;
+    top:2.625rem;
     left:0;
     width:25%;
     &>dl{
         &>dt{
-            text-indent: 20px;
-            height:38px;
-            line-height: 38px;
+            text-indent: 1.25rem;
+            height:2.375rem;
+            line-height: 2.375rem;
             background: #f3f3f3;
             position: relative;
+            font-size: 0.875rem;
             span:nth-child(1){
                 position: absolute;
-                top:9px;
-                left:10px;
+                top:0.5625rem;
+                left:0.625rem;
                 display: inline-block;
-                width: 5px;
-                height: 20px;
-                // line-height: 20px;
+                width: 0.3125rem;
+                height: 1.25rem;
+                // line-height: 1.25rem;
                 background: #f3f3f3;
             }
         }
@@ -40,16 +41,17 @@
 .ClassifyRight{
     float: right;
     width:75%;
-    padding:5px;
+    padding:0.3125rem;
     .ClassifyDt{
         float: left;
-        width: 76px;
-        // height: 70px;
+        width: 4.75rem;
+        // height: 4.375rem;
         text-align: center;
-        margin:7px;
+        margin:0.4375rem;
+        font-size: 0.875rem;
         &>img{
-            width: 76px;
-            height: 76px;
+            width: 4.75rem;
+            height: 4.75rem;
         }
         span:nth-child(2){
             color:#8f8f94;
@@ -65,8 +67,9 @@
         left:40%;
         text-align: center;
         display: inline-block;
-        width: 56px;
+        width: 3.5rem;
         color:#8f8f94;
+        font-size: 0.875rem;
     }
     span:nth-child(3){
         width:37%;
@@ -74,5 +77,5 @@
 }
 // 中间内容顶部边框
 .classifyTop{
-    border-top: 4px solid #f3f3f3;
+    border-top: 0.25rem solid #f3f3f3;
 }
