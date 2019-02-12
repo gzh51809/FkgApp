@@ -126,9 +126,10 @@ class Home extends Component {
         console.log(id,123);
         this.props.history.push('/list/'+id)
     }
-    gotodetail(id){
-        console.log(id)
-        this.props.history.push('/detail/'+id)
+    gotodetail(commonId,id){
+        const str = id+','+commonId
+        console.log(str)
+        this.props.history.push('/detail/'+str)
     }
     render(){
         return (
@@ -173,7 +174,7 @@ class Home extends Component {
                                 {
                                     this.state.homeScoll.map(item=>{
                                         return (
-                                            <dt key={item.goodsId} onClick={()=>{this.gotodetail(item.goodsId)}}>
+                                            <dt key={item.goodsId} onClick={()=>{this.gotodetail(item.commonId,item.goodsId)}}>
                                                 <img src={item.goodsImage} alt=""/>
                                                 <p>{item.goodsName}</p>
                                                 <span>￥{item.goodsPrice}</span>
@@ -195,7 +196,7 @@ class Home extends Component {
                                 {
                                     this.state.goodShop.map(item=>{
                                         return (
-                                            <dt key={item.shopName} onClick={()=>{this.gotodetail(item.imageList[0].goodsId)}}>
+                                            <dt key={item.shopName} onClick={()=>{this.gotodetail(item.commonId,item.imageList[0].goodsId)}}>
                                                 <img src={item.image} alt=""/>
                                             </dt>
                                         )
@@ -234,7 +235,7 @@ class Home extends Component {
                             {
                                 this.state.dfgoods.map(item=>{
                                     return (
-                                        <dt key={item.goodsId} onClick={()=>{this.gotodetail(item.goodsId)}}>
+                                        <dt key={item.goodsId} onClick={()=>{this.gotodetail(item.commonId,item.goodsId)}}>
                                             <img src={item.goodsImage} alt=""/>
                                             <p>{item.goodsName}</p>
                                             <span>￥{item.goodsPrice}</span>
@@ -255,7 +256,7 @@ class Home extends Component {
                             {
                                 this.state.xxgoods.map(item=>{
                                     return (
-                                        <dt key={item.goodsId} onClick={()=>{this.gotodetail(item.goodsId)}}>
+                                        <dt key={item.goodsId} onClick={()=>{this.gotodetail(item.commonId,item.goodsId)}}>
                                             <img src={item.goodsImage} alt=""/>
                                             <p>{item.goodsName}</p>
                                             <span>￥{item.goodsPrice}</span>

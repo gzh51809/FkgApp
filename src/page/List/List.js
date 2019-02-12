@@ -39,9 +39,15 @@ class List extends Component {
         }
         this.goback = this.goback.bind(this);
         this.goto = this.goto.bind(this);
+        this.gotodetail = this.gotodetail.bind(this);
     }
     goback(){
         this.props.history.goBack()
+    }
+    gotodetail(commonId,id){
+        const str = id+','+commonId
+        console.log(str)
+        this.props.history.push('/detail/'+str)
     }
     goto(idx,item){
         // console.log(item)
@@ -186,7 +192,7 @@ class List extends Component {
                         {
                             this.state.list.map(item=>{
                                 return (
-                                    <li key={item.commonId} className="listLi">
+                                    <li key={item.commonId} className="listLi" onClick={()=>{this.gotodetail(item.commonId,item.goodsId)}}>
                                         <img src={item.commonImage} alt=""/>
                                         <div className="listLiRight">
                                             <span>{item.commonName}</span>

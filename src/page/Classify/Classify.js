@@ -14,6 +14,7 @@ class Classity extends Component {
             current:0,
         }
         this.goto = this.goto.bind(this);
+        this.gotolist = this.gotolist.bind(this);
     }
     goto(idx,id){
         this.setState({
@@ -27,6 +28,11 @@ class Classity extends Component {
             console.log('rightList',this.state.rightList)
         })
         // console.log(123,idx,id);
+    }
+    gotolist(id){
+        // id = (id.split(':')[1]).split('}')[0];
+        console.log(id,123);
+        this.props.history.push('/list/'+id)
     }
     componentWillMount(){
         axios.get('https://www.fkgou.com/mallms/wap/goods/itemcat/query?catParentId=0').then(res=>{
@@ -78,7 +84,7 @@ class Classity extends Component {
                                                 {
                                                     item.gdsCats.map(items=>{
                                                         return (
-                                                            <dt className="ClassifyDt" key={items.catId} >
+                                                            <dt className="ClassifyDt" key={items.catId} onClick={()=>{this.gotolist(items.catId)}}>
                                                                 <img src={items.catPic} alt=""/>
                                                                 <span>{items.catName}</span>
                                                             </dt>
