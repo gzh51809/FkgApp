@@ -1,8 +1,18 @@
 import React, { Component } from 'react';
 import '../../sass/bigCenter.scss';
 import '../../sass/Detail.scss';
-import { Carousel } from 'antd-mobile';
+import { Carousel ,Modal} from 'antd-mobile';
 import axios from 'axios';
+function closest(el, selector) {
+    const matchesSelector = el.matches || el.webkitMatchesSelector || el.mozMatchesSelector || el.msMatchesSelector;
+    while (el) {
+        if (matchesSelector.call(el, selector)) {
+            return el;
+        }
+        el = el.parentElement;
+    }
+    return null;
+}
 class Mine extends Component {
     constructor(){
         super();
@@ -22,16 +32,47 @@ class Mine extends Component {
             shopDetail:[],
             gdsCommon:[],
             commonId:[],
-            Scale:[]
+            Scale:[],
+            modal2: false,
+            textActive:'',
+            modelActive:0,
+            number:1,
+            idx:0
         }
         this.goback = this.goback.bind(this);
         this.TabSwitch = this.TabSwitch.bind(this);
+        this.changeModelIdx = this.changeModelIdx.bind(this);
+        this.gotodetail = this.gotodetail.bind(this);
+    }
+    showModal = (key,num) => (e) => {
+        e.preventDefault(); // 修复 Android 上点击穿透
+        this.setState({
+          [key]: true,
+          idx:num
+        });
+        console.log('num',num);
+    }
+    onClose = key => () => {
+        this.setState({
+            [key]: false,
+        });
+    }
+
+    onWrapTouchStart = (e) => {
+        // fix touch to scroll background page on iOS
+        if (!/iPhone|iPod|iPad/i.test(navigator.userAgent)) {
+            return;
+        }
+        const pNode = closest(e.target, '.am-modal-content');
+        if (!pNode) {
+            e.preventDefault();
+        }
     }
     componentWillMount(){
         // console.log(this.props)
         const goodsId = ((this.props.location.pathname).split('/')[2]).split(',')[0];
         const commonsId = ((this.props.location.pathname).split('/')[2]).split(',')[1];
-        console.log(goodsId,commonsId)
+        console.log('hash',goodsId,commonsId)
         // 发起ajax请求
         // 商品内容
         axios({
@@ -50,8 +91,14 @@ class Mine extends Component {
                 // 商家信息
                 shopDetail:res.data.data.shopDetail,
                 // 规格
-                gdsCommon:res.data.data.gdsCommon,
+                gdsCommon:res.data.data.gdsCommon.commonSpecValueList,
+                // 规格的长度,为了高亮最后一个
+                modelActive:res.data.data.gdsCommon.commonSpecValueList.length-1,
+                // 规格内容
+                textActive:res.data.data.goodsBases.goodsSpec
             })
+            console.log('modelActive',this.state.modelActive)
+            console.log('gdsCommon',this.state.gdsCommon)
         }).catch(err=>{
             console.log(err);
         })
@@ -91,12 +138,24 @@ class Mine extends Component {
             console.log(err);
         })
     }
+    gotodetail(commonId,id){
+        const str = id+','+commonId
+        console.log(str)
+        // this.props.history.push('/detail/'+str)
+    }
     goback(){
         this.props.history.goBack()
     }
     TabSwitch(idx){
         this.setState({
             active:idx
+        })
+    }
+    changeModelIdx(idx){
+        let text = this.state.gdsCommon[idx].goodsSpec;
+        this.setState({
+            modelActive:idx,
+            textActive : text
         })
     }
     render(){
@@ -152,9 +211,9 @@ class Mine extends Component {
                                 <span>江西省赣州市青龙镇赤江村大山排</span>
                                 <span className="iconfont icon-gengduo"></span>
                             </div>
-                            <div className="detDiCDiv detDiCSpeci">
+                            <div className="detDiCDiv detDiCSpeci" onClick={this.showModal('modal2',0)}>
                                 <span>规格</span>
-                                <span>{this.state.goodsBases.goodsSpec}</span>
+                                <span>{this.state.textActive}</span>
                                 <span className="iconfont icon-gengduo"></span>
                             </div>
                         </div>
@@ -193,7 +252,7 @@ class Mine extends Component {
                                 {
                                     this.state.Scale.map(item=>{
                                         return (
-                                            <li key={item.goodsId}>
+                                            <li key={item.goodsId} onClick={()=>{this.gotodetail(item.commonId,item.goodsId)}}>
                                                 <img src={item.commonImage} alt=""/>
                                                 <span>{item.commonName}</span>
                                                 <span>￥{item.commonPrice}</span>
@@ -216,12 +275,60 @@ class Mine extends Component {
                             <span><i className="iconfont icon-kefu"></i>客服</span>
                             <span><i className="iconfont icon-shoucang"></i>收藏</span>
                         </li>
-                        <li>
+                        <li onClick={this.showModal('modal2',1)}>
                             <span>加入购物车</span>
                             <span>立即购买</span>
                         </li>
                     </ul>
                 </div>
+                <Modal
+                popup
+                visible={this.state.modal2}
+                onClose={this.onClose('modal2')}
+                animationType="slide-up"
+                >
+                    <div className="detModel">
+                        <div className="detModelTop">
+                            <img src={this.state.goodsBases.goodsImage} alt=""/>
+                            <span>￥{this.state.goodsBases.goodsPrice}</span>
+                            <span>{this.state.goodsBases.goodsName}</span>
+                            <span>库存{this.state.goodsBases.goodsMaxSale}</span>
+                            <span className="iconfont icon-cha"></span>
+                        </div>
+                        <div className="detModelCenter">
+                            <span>规格</span>
+                            <ul className="clearfix">
+                                {
+                                    this.state.gdsCommon.map((item,idx)=>{
+                                        return (
+                                            <li key={item.goodsId}>
+                                                <span className={this.state.modelActive === idx ?'detModelActive':''} onClick={()=>{this.changeModelIdx(idx)}}>{item.goodsSpec}</span>
+                                            </li>
+                                        )
+                                    })
+                                }
+                            </ul>
+                        </div>
+                        <div className="detModelBottom clearfix">
+                            <span>数量</span>
+                            <ul className="clearfix">
+                                <li>-</li>
+                                <li>{this.state.number}</li>
+                                <li>+</li>
+                            </ul>
+                        </div>
+                        <div className="detBottom">
+                            {
+                                this.state.idx === 0 ?
+                                <div className="detBottomOne">
+                                    <span>加入购物车</span>
+                                    <span>立即购买</span>
+                                </div>:
+                                <div className="detBottomTwo">确定</div>
+                            }
+                        </div>
+                    </div>
+                </Modal>
             </div>
         )
     }
