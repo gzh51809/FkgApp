@@ -142,6 +142,8 @@ class Mine extends Component {
         const str = id+','+commonId
         console.log(str)
         // this.props.history.push('/detail/'+str)
+        // this.forceUpdate();
+        // console.log('this',this)
     }
     goback(){
         this.props.history.goBack()
